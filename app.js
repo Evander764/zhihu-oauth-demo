@@ -37,7 +37,7 @@ async function loadStatus() {
       nodes.login.classList.remove('disabled');
       nodes.login.removeAttribute('aria-disabled');
     } else if (data.configured && !data.callbackRegistered) {
-      nodes.runtime.textContent = '应用已配置，等待知乎登记回调';
+      nodes.runtime.textContent = '等待知乎登记回调';
       nodes.pill.textContent = '待登记回调';
       nodes.pill.className = 'status-pill waiting';
       nodes.login.textContent = '等待回调登记';

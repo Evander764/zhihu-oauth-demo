@@ -36,3 +36,9 @@
 ## Git 发布身份检查
 
 首次发布因本机默认邮箱不能关联 GitHub 账号而被 Vercel 阻止。提交前运行 `npm run check:author`，确认本仓库作者身份与当前 GitHub 账号对应。修正只限本仓库，不改变全局 Git 身份，不重写已推送提交。推送后还需检查 GitHub 的 Vercel 状态和线上实际提交，不能把 Git push 当作发布完成。
+
+## 首次线上读回
+
+2026-09-15：提交 `88e34c34b73e37c91ef34d1abb0e3d3d27c281ff` 的生产部署 `dpl_CH7iEjwJKki3T7ucM6xBHmNZMzrP` 返回 Ready。线上页面显示 App 661 的回调待登记；App Key 和 Access Secret 已通过项目 Secret 写入并读回更新状态。桌面与手机均无横向溢出；手机标题曾出现末字单独成行，本次调整字号解决。
+
+知乎当前登录账号的个人中心只显示密钥管理，未找到 App 661 的回调登记入口；实际登记状态仍未确认，真实 OAuth 和五项用户接口尚待本人授权验收。

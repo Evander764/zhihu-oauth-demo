@@ -55,7 +55,7 @@ h1 { max-width: 760px; margin-bottom: 28px; font-family: "Songti SC", "STSong", 
 .check-list dd { margin: 0; font-weight: 700; text-align: right; }
 .check-list dd.ok { color: var(--green); }
 .check-list dd.missing { color: var(--amber); }
-.status-note { margin: 21px 0 0; color: var(--muted); font-size: 13px; line-height: 1.65; }
+.status-note { margin: 21px 0 0; color: var(--muted); font-size: 13px; line-height: 1.65; overflow-wrap: anywhere; }
 
 .route-section { padding: 64px 0 76px; border-top: 1px solid rgba(16,35,63,.12); }
 .section-title { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 35px; }
@@ -83,7 +83,7 @@ footer { display: flex; justify-content: space-between; gap: 24px; padding: 28px
   .topbar { height: 72px; }
   .environment { max-width: 180px; justify-content: flex-end; text-align: right; }
   .hero { padding: 52px 0; }
-  h1 { font-size: clamp(48px, 16vw, 66px); }
+  h1 { font-size: clamp(40px, 13.2vw, 64px); }
   .readiness { padding: 23px; border-radius: 22px 7px 22px 7px; }
   .route { grid-template-columns: 1fr; }
   .route li { min-height: 165px; }
