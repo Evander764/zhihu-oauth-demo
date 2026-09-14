@@ -20,9 +20,9 @@
       <main>
         <section class="hero" aria-labelledby="hero-title">
           <div class="hero-copy">
-            <p class="eyebrow">ZHIHU OAUTH · AUTHORIZATION CODE</p>
-            <h1 id="hero-title">从一次授权，<br />看清整条路。</h1>
-            <p class="lede">这是一个最小、透明的知乎 OAuth 联调站。它只在后端交换令牌，不把 App Key、Access Secret 或用户 Token 交给浏览器。</p>
+            <p class="eyebrow">知乎黑客松 · 小组应用 661</p>
+            <h1 id="hero-title">用知乎账号，<br />连接你的内容。</h1>
+            <p class="lede">授权后，分别查看一条创作、关注、收藏夹、收藏夹内容和近期收藏。页面会说明每项读取是成功、暂无数据，还是失败。</p>
             <div class="hero-actions">
               <a class="primary-button disabled" id="login" href="#" aria-disabled="true">等待 OAuth 凭证</a>
               <a class="text-link" href="https://developer.zhihu.com/docs" target="_blank" rel="noreferrer">查看知乎开放平台文档 <span aria-hidden="true">↗</span></a>
@@ -52,10 +52,10 @@
             <h2 id="route-title">授权路径</h2>
           </div>
           <ol class="route" aria-label="OAuth 授权流程">
-            <li><span class="route-index">01</span><div><strong>从本站出发</strong><p>生成一次性 state，并跳转知乎授权页。</p></div></li>
+            <li><span class="route-index">01</span><div><strong>从本站出发</strong><p>准备好后，前往知乎官方授权页面。</p></div></li>
             <li><span class="route-index">02</span><div><strong>用户确认授权</strong><p>登录和授权都在知乎官方页面完成。</p></div></li>
-            <li><span class="route-index">03</span><div><strong>后端交换令牌</strong><p>授权码、App Key 与 Token 不进入前端。</p></div></li>
-            <li><span class="route-index">04</span><div><strong>最小读取验收</strong><p>仅展示公开账号资料与一条最近创作。</p></div></li>
+            <li><span class="route-index">03</span><div><strong>回到本站</strong><p>使用本次授权读取你的公开范围内容。</p></div></li>
+            <li><span class="route-index">04</span><div><strong>查看五项结果</strong><p>每类最多读取一条，并分别显示结果。</p></div></li>
           </ol>
         </section>
 

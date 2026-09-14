@@ -36,11 +36,17 @@ async function loadStatus() {
       nodes.login.href = '/api/oauth-start';
       nodes.login.classList.remove('disabled');
       nodes.login.removeAttribute('aria-disabled');
+    } else if (data.configured && !data.callbackRegistered) {
+      nodes.runtime.textContent = '应用已配置，等待知乎登记回调';
+      nodes.pill.textContent = '待登记回调';
+      nodes.pill.className = 'status-pill waiting';
+      nodes.login.textContent = '等待回调登记';
+      nodes.note.textContent = `请为知乎 App ${data.appId} 登记：${data.redirectUri}。登记确认后即可启用授权。`;
     } else {
       nodes.runtime.textContent = '网站已上线，等待 OAuth 凭证';
       nodes.pill.textContent = '等待配置';
       nodes.pill.className = 'status-pill waiting';
-      nodes.note.textContent = '先用本网站的公网回调地址申请知乎 OAuth；获批后补充环境变量即可启用。';
+      nodes.note.textContent = '应用接入配置尚未完成，暂时无法授权。';
     }
   } catch (error) {
     nodes.runtime.textContent = '状态检查失败';

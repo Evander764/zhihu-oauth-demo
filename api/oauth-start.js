@@ -2,9 +2,10 @@ import { randomBytes } from 'node:crypto';
 import { authorizationUrl, configuration } from '../lib/oauth.js';
 
 export default function handler(_request, response) {
-  const { values, ready } = configuration();
+  const { values, ready, configured, callbackRegistered } = configuration();
   if (!ready) {
-    response.status(503).json({ ok: false, error: 'OAuth 尚未配置完成。' });
+    response.status(503).json({ ok: false, error: configured && !callbackRegistered
+      ? '公网回调尚未确认登记到知乎 App 661，暂不发起授权。' : 'OAuth 尚未配置完成。' });
     return;
   }
 

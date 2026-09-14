@@ -1,6 +1,11 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "cleanUrls": true,
+  "rewrites": [
+    { "source": "/auth/callback", "destination": "/api/oauth-callback" },
+    { "source": "/api/oauth/status", "destination": "/api/status" }
+  ],
+  "functions": { "api/oauth-callback.js": { "maxDuration": 60 } },
   "headers": [
     {
       "source": "/(.*)",

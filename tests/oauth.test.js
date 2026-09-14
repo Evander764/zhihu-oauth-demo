@@ -8,9 +8,24 @@ test('configuration exposes readiness without secret values', () => {
     ZHIHU_OAUTH_APP_KEY: 'secret-app-key',
     ZHIHU_ACCESS_SECRET: 'secret-access',
     ZHIHU_OAUTH_REDIRECT_URI: 'https://demo.example.com/api/oauth-callback',
+    ZHIHU_OAUTH_CALLBACK_REGISTERED: 'true',
   });
   assert.equal(result.ready, true);
   assert.deepEqual(result.checks, { appId: true, appKey: true, accessSecret: true, redirectUri: true });
+});
+
+test('a supplied local example is not a valid registered callback', () => {
+  for (const uri of ['http://127.0.0.1', 'https://127.0.0.1/auth/callback', 'https://10.0.0.1/auth/callback', 'https://localhost/auth/callback']) {
+    assert.equal(configuration({ ZHIHU_OAUTH_REDIRECT_URI: uri }).checks.redirectUri, false);
+  }
+});
+
+test('configured credentials do not imply a registered public callback', () => {
+  const result = configuration({ ZHIHU_OAUTH_APP_ID: '661', ZHIHU_OAUTH_APP_KEY: 'fixture-key',
+    ZHIHU_ACCESS_SECRET: 'fixture-access', ZHIHU_OAUTH_REDIRECT_URI: 'https://demo.example.com/auth/callback' });
+  assert.equal(result.configured, true);
+  assert.equal(result.callbackRegistered, false);
+  assert.equal(result.ready, false);
 });
 
 test('authorization URL carries the documented fields', () => {

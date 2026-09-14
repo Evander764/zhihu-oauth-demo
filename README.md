@@ -2,7 +2,9 @@
 
 一个部署在 Vercel 的最小知乎 OAuth Authorization Code Flow Demo。
 
-当前版本可以先在没有 OAuth 凭证的情况下上线，得到固定公网地址。将该地址的 `/api/oauth-callback` 登记为知乎 OAuth 回调地址，获批后再在 Vercel 配置环境变量，即可启用登录按钮。
+本版本接入小组 App 661，复用 https://zhihu-oauth-demo.vercel.app/ 。待向知乎核对并登记的完整回调是 https://zhihu-oauth-demo.vercel.app/auth/callback 。旧的 `/api/oauth-callback` 路径继续兼容。
+
+凭证配置与真实授权分开验收：确认回调已登记后，才启用授权按钮。授权返回后读取创作、关注、收藏夹、收藏夹内容、近期收藏五类公开数据，每类最多一条，分别报告成功、空数据或失败。
 
 ## 必需环境变量
 
@@ -12,11 +14,12 @@
 | `ZHIHU_OAUTH_APP_KEY` | OAuth 应用密钥 | 否 |
 | `ZHIHU_ACCESS_SECRET` | 知乎开放平台调用凭证 | 否 |
 | `ZHIHU_OAUTH_REDIRECT_URI` | 完整 HTTPS 回调地址 | 会出现在授权跳转 URL |
+| `ZHIHU_OAUTH_CALLBACK_REGISTERED` | 真实回调登记确认后设为 `true`；缺省为未登记 | 仅返回确认状态 |
 
 回调地址格式：
 
 ```text
-https://<你的 Vercel 域名>/api/oauth-callback
+https://zhihu-oauth-demo.vercel.app/auth/callback
 ```
 
 ## 本地检查
@@ -32,3 +35,5 @@ npm run check
 - 回调兼容知乎实测的 `authorization_code` 参数和旧式 `code` 参数。
 - 如果知乎没有回传 `state`，页面会明确标记为“仅适合临时联调”。在平台闭合 `state`、PKCE、scope、撤销与刷新协议前，不把此 Demo 当作生产身份系统。
 - Git 仓库只保存环境变量名称，不保存任何凭证值。
+
+接入取舍、验证方式、版面审计和回退说明见 [App 661 接入记录](docs/app-661-integration.md)。
